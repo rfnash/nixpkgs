@@ -1,13 +1,13 @@
 { stdenv, fetchurl, makeWrapper, go, lxc, sqlite, iproute, bridge_utils, devicemapper,
-btrfsProgs, iptables, bash}:
+btrfsProgs, iptables, bash, apparmor}:
 
 stdenv.mkDerivation rec {
   name = "docker-${version}";
-  version = "0.9.1";
+  version = "1.0.1";
 
   src = fetchurl {
     url = "https://github.com/dotcloud/docker/archive/v${version}.tar.gz";
-    sha256 = "0m4s21dxd1bj08xrmi7iw77djj3cpxvjsin12p6v6v1qnigm18ww";
+    sha256 = "1iz4kbi1pdkzb7hq7vfylpfrbvll06w2mrl3b35h26h3zx7hxa7g";
   };
 
   phases = ["unpackPhase" "preBuild" "buildPhase" "installPhase"];
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
     export AUTO_GOPATH=1
-    export DOCKER_GITCOMMIT="867b2a90c228f62cdcd44907ceef279a2d8f1ac5"
+    export DOCKER_GITCOMMIT="990021ac2b4a4c8e6ae66dd331c372f70eec3b7a"
     ./hack/make.sh dynbinary
   '';
 
