@@ -11335,5 +11335,6 @@ let
   adobeReader = adobe-reader;
   asciidocFull = asciidoc-full;  # added 2014-06-22
 
+  passwordsafe = callPackage ../tools/security/passwordsafe { };
 
 }; in self; in pkgs
