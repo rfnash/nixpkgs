@@ -70,6 +70,7 @@
   redbaron = "Maxim Ivanov <ivanov.maxim@gmail.com>";
   relrod = "Ricky Elrod <ricky@elrod.me>";
   rickynils = "Rickard Nilsson <rickynils@gmail.com>";
+  rfnash = "Robert F. Nash <robert@robertnash.net>";
   rob = "Rob Vermaas <rob.vermaas@gmail.com>";
   roconnor = "Russell O'Connor <roconnor@theorem.ca>";
   roelof = "Roelof Wobben <rwobben@hotmail.com>";

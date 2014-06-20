@@ -10928,5 +10928,6 @@ let
   # Attributes for backward compatibility.
   adobeReader = adobe-reader;
 
+  passwordsafe = callPackage ../tools/security/passwordsafe { };
 
 }; in self; in pkgs
