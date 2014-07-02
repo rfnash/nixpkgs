@@ -2,7 +2,7 @@ source $stdenv/setup
 
 tar xvfz $src
 
-cd plan9
+cd plan9port
 
 for p in $patches; do
   echo "applying patch $p"
