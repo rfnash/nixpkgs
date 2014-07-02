@@ -1,22 +1,22 @@
-{stdenv, fetchurl, libX11
+{stdenv, fetchurl, libX11, which
 , xproto ? null
 , libXt ? null
 , xextproto ? null
 , libXext ? null }:
 
 stdenv.mkDerivation rec {
-  name = "plan9port-20140228";
+  name = "plan9port-20140306";
 
   patches = [ ./fontsrv.patch ];
 
   builder = ./builder.sh;
 
   src = fetchurl {
-    url = "http://swtch.com/plan9port/${name}.tgz";
-    sha256 = "1l7nsjfrrcq0l43kw0f1437jz3nyl9qw7i2vn0sbmcsv5vmsj0cr";
+    url = "https://plan9port.googlecode.com/files/${name}.tgz";
+    sha256 = "1sza12j3db7i54r3pzli8wmby6aiyzmyfj8w0nidmawkwv6jdf6b";
   };
 
-  buildInputs = stdenv.lib.optionals (!stdenv.isDarwin) [ libX11 xproto libXt xextproto libXext ];
+  buildInputs = stdenv.lib.optionals (!stdenv.isDarwin) [ libX11 xproto libXt xextproto libXext which ];
 
   meta = {
     homepage = "http://swtch.com/plan9port/";
