@@ -4,16 +4,17 @@
 assert stdenv.system == "x86_64-linux" || stdenv.system == "i686-linux";
 
 let
-  version = "1.4.3";
+  version = "1.6.3";
 in
 stdenv.mkDerivation rec {
+    dontPatchShebangs=1;
   name = "vagrant-${version}";
 
   src =
     if stdenv.system == "x86_64-linux" then
       fetchurl {
         url    = "https://dl.bintray.com/mitchellh/vagrant/vagrant_${version}_x86_64.deb";
-        sha256 = "dbd06de0f3560e2d046448d627bca0cbb0ee34b036ef605aa87ed20e6ad2684b";
+        sha256 = "1gmdg92dw7afnvpji0wg4nzr7vhk8mrmcqk3hcrkwscby2f2bhqg";
 #        sha256 = "1gmdg92dw7afnvpji0wg4nzr7vhk8mrmcqk3hcrkwscby2f2bhqg";
       }
     else
@@ -43,5 +44,10 @@ stdenv.mkDerivation rec {
     mkdir -p "$out"
     cp -r opt "$out"
     cp -r usr/bin "$out"
+      patchelf \
+        --interpreter "$(cat $NIX_GCC/nix-support/dynamic-linker)" \
+        --set-rpath $out/opt/vagrant/embedded/lib:${stdenv.gcc.gcc}/lib${stdenv.lib.optionalString stdenv.is64bit "64"} \
+        $out/opt/vagrant/bin/../embedded/bin/ruby
+
   '';
 }
