@@ -1,4 +1,4 @@
-{stdenv, fetchurl, libX11, which
+{stdenv, fetchurl, libX11, which, perl
 , xproto ? null
 , libXt ? null
 , xextproto ? null
@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "1sza12j3db7i54r3pzli8wmby6aiyzmyfj8w0nidmawkwv6jdf6b";
   };
 
-  buildInputs = stdenv.lib.optionals (!stdenv.isDarwin) [ libX11 xproto libXt xextproto libXext which ];
+  buildInputs = stdenv.lib.optionals (!stdenv.isDarwin) [ libX11 xproto libXt xextproto libXext which perl ];
 
   meta = {
     homepage = "http://swtch.com/plan9port/";
