@@ -1,4 +1,4 @@
-{stdenv, fetchurl, cmake, libuuid}:
+{stdenv, fetchurl, cmake, libuuid, gnutls}:
 
 stdenv.mkDerivation rec {
   name = "taskwarrior-${version}";
@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ libuuid ];
+  buildInputs = [ libuuid gnutls ];
 
   meta = {
     description = "GTD (getting things done) implementation";
